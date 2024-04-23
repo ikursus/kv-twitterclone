@@ -22,14 +22,14 @@
         <div class="col-md"></div>
         <div class="col-md align-self-center text-center">
 
-            <img src="<?php echo asset('/images/facebook.png'); ?>">
+            <img src="{{ asset('/images/facebook.png') }}">
 
             <h3 class="text-center">Login Area</h3>
 
             <div class="card" id="card-login">
                 <div class="card-body">
-                    <form method="POST" action="/login">
-                    <?php echo csrf_field(); ?>
+                    <form method="POST">
+                    @csrf
                     <div class="mb-3">
                         <label class="form-label">Email address</label>
                         <input type="email" class="form-control">

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 // Halaman utama/homepage
@@ -8,20 +10,12 @@ Route::get('/', function() {
     return view('homepage');
 });
 // Paparkan Halaman login ke akaun pengguna
-Route::get('/signin', function() {
+Route::get('/signin', [LoginController::class, 'borangLogin']);
+//Route::view('/signin', 'auth.login');
 
-    return view('auth.login');
-});
 // Alamat routing untuk terima data daripada borang login
-Route::post('/login', function () {
-    // Buat semakan data yang dihantar betul @ tidak
-    // return 'Proses validasi borang login';
-    // Jika betul, maka redirect ke halaman dashboard
-    return redirect('/dashboard');
-});
+Route::post('/signin', [LoginController::class, 'authenticate']);
 
 
 // Halaman dashboard pengguna selepas login
-Route::get('/dashboard', function() {
-    return 'Ini halaman dashboard pengguna';
-});
+Route::get('/dashboard', DashboardController::class);
