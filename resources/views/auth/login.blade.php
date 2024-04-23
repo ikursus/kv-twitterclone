@@ -28,15 +28,23 @@
 
             <div class="card" id="card-login">
                 <div class="card-body">
+
+                    @include('alerts')
+
                     <form method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Email address</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control @error('loginid') is-invalid @enderror" name="loginid">
+                        @error('loginid')
+                        <div class="invalid-feedback">
+                        {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control">
+                        <input type="password" class="form-control" name="loginpass">
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" name="remember_me">

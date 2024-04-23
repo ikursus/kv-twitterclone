@@ -9,9 +9,6 @@
         body {
             margin-top: 100px;
         }
-        #card-tweet {
-            max-width: 600px;
-        }
     </style>
   </head>
   <body>
