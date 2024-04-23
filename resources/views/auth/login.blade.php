@@ -31,12 +31,12 @@
 
                     @include('alerts')
 
-                    <form method="POST">
+                    <form method="POST" action="{{ route('login.authenticate') }}">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Email address</label>
-                        <input type="email" class="form-control @error('loginid') is-invalid @enderror" name="loginid">
-                        @error('loginid')
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
+                        @error('email')
                         <div class="invalid-feedback">
                         {{ $message }}
                         </div>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control" name="loginpass">
+                        <input type="password" class="form-control" name="password">
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" name="remember_me">

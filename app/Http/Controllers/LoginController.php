@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -10,22 +11,23 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    function authenticate(Request $request) {
+    function authenticate(Request $request)
+    {
 
-        // Dapatkan SEMUA data daripada borang login
-        // $data = $request->all();
-        // $data = $request->only('loginid', 'loginpass');
-        // $data = $request->except('loginid');
-        // $data = $request->input('loginid');
-        $data = $request->validate([
-            'loginid' => ['required', 'email:filter'],
-            'loginpass' => 'required|min:3'
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        return $data;
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        //return 'Proses Validasi Login';
-        // return redirect('/dashboard');
+            return redirect()->intended('dashboard');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
 
     }
 }

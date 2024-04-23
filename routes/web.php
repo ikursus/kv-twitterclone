@@ -10,12 +10,12 @@ Route::get('/', function() {
     return view('homepage');
 });
 // Paparkan Halaman login ke akaun pengguna
-Route::get('/signin', [LoginController::class, 'borangLogin']);
+Route::get('/daftar-masuk', [LoginController::class, 'borangLogin'])->name('login');
 //Route::view('/signin', 'auth.login');
 
 // Alamat routing untuk terima data daripada borang login
-Route::post('/signin', [LoginController::class, 'authenticate']);
+Route::post('/signin', [LoginController::class, 'authenticate'])->name('login.authenticate');
 
 
 // Halaman dashboard pengguna selepas login
-Route::get('/dashboard', DashboardController::class);
+Route::get('/dashboard', DashboardController::class)->middleware('auth');
