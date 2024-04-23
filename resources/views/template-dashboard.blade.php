@@ -20,7 +20,11 @@
             </div>
         </div>
         <div class="row mb-5">
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+
+                <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+
+            </div>
             <div class="col-md-8">
 
                 <div class="card" id="card-tweet">
