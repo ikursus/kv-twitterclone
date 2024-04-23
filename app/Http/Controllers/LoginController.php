@@ -11,6 +11,7 @@ class LoginController extends Controller
     }
 
     function authenticate() {
-        return 'Proses Validasi Login';
+        //return 'Proses Validasi Login';
+        return redirect('/dashboard');
     }
 }
