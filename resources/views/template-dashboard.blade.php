@@ -16,7 +16,7 @@
 
         <div class="row mb-5">
             <div class="col">
-                <h3>Dashboard</h3>
+                <h3>Welcome {{ auth()->user()->name }}</h3>
             </div>
         </div>
         <div class="row mb-5">
@@ -33,31 +33,41 @@
             </div>
             <div class="col-md-10">
 
-                <div class="card mb-5" id="card-tweet">
-                    <div class="card-body">
-                        <textarea class="form-control" name="content"></textarea>
-                    </div>
-                    <div class="card-footer">
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="submit">Tweet</button>
+                <form action="{{ route('posts.store') }}" method="post">
+                    @csrf
+                    <div class="card mb-5" id="card-tweet">
+                        <div class="card-body">
+                            <textarea class="form-control" name="content"></textarea>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" type="submit">Tweet</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
 
                 <div class="card">
                     <div class="card-body">
 
                         <table class="table">
                             <tbody>
+                                @foreach($senaraiPost as $post)
                                 <tr>
                                     <td>
-                                        Sample tweet Sample tweet Sample tweet
+                                        {{ $post->content }}
                                     </td>
                                     <td>
                                         <a href="" class="btn btn-sm btn-info">Edit</a>
-                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                        <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
 

@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 
 // Halaman utama/homepage
 Route::get('/', function() {
@@ -19,6 +20,11 @@ Route::post('/signin', [LoginController::class, 'authenticate'])->name('login.au
 
 // Halaman dashboard pengguna selepas login
 Route::get('/dashboard', DashboardController::class)->middleware('auth')->name('dashboard');
+// Terima data daripada borang post / tweet
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy'); // Route parameter
+
+
 
 Route::get('/signout', [LoginController::class, 'logout'])->name('logout');
 
