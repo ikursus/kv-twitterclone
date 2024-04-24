@@ -20,14 +20,20 @@
             </div>
         </div>
         <div class="row mb-5">
-            <div class="col-md-4">
+            <div class="col-md-2">
 
-                <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+                <div class="d-grid gap-2">
+
+                    <a href="{{ route('dashboard') }}" class="btn btn-primary mb-3">Dashboard</a>
+
+                    <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+
+                  </div>
 
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
 
-                <div class="card" id="card-tweet">
+                <div class="card mb-5" id="card-tweet">
                     <div class="card-body">
                         <textarea class="form-control" name="content"></textarea>
                     </div>
@@ -37,13 +43,6 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
-        </div>
-
-        <div class="row mb-5">
-            <div class="col-md-4"></div>
-            <div class="col-md-8">
 
                 <div class="card">
                     <div class="card-body">
@@ -67,6 +66,7 @@
 
             </div>
         </div>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>

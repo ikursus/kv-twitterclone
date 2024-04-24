@@ -18,7 +18,7 @@ Route::post('/signin', [LoginController::class, 'authenticate'])->name('login.au
 
 
 // Halaman dashboard pengguna selepas login
-Route::get('/dashboard', DashboardController::class)->middleware('auth');
+Route::get('/dashboard', DashboardController::class)->middleware('auth')->name('dashboard');
 
 Route::get('/signout', [LoginController::class, 'logout'])->name('logout');
 
