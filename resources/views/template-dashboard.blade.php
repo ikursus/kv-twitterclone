@@ -24,7 +24,7 @@
 
                 <div class="d-grid gap-2">
 
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary mb-3">Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="btn btn-primary">Dashboard</a>
 
                     <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
 
